@@ -1,25 +1,36 @@
-"use client";
-
-import { Carousel } from "flowbite-react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const Banner = () => {
+  var settings = {
+    dots: true,
+
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 300,
+    arrows:false
+  };
+
   return (
-    <div>
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-        <Carousel
-          onSlideChange={(index) => console.log("onSlideChange()", index)}
-        >
-          <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-            Slide 1
-          </div>
-          <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-            Slide 2
-          </div>
-          <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-            Slide 3
-          </div>
-        </Carousel>
-      </div>
+    <div className="">
+      <Slider {...settings}>
+        <div className="lg:max-h-[300px] ">
+          <img className=" h-[70vh] w-full  " 
+            src="https://i.ibb.co/t31p15M/image.png"
+            alt=""
+          />
+        </div>
+        <div >
+          <img className=" h-[70vh] w-full  "  src="https://i.ibb.co/C260kZV/joel-muniz-3k3l2brxmw-Q-unsplash-1.jpg" alt="" />
+        </div>
+        <div>
+          <img className=" h-[70vh] w-full   "  src="https://i.ibb.co/F61TdYw/image.png" alt="" />
+        </div>
+        <div className=" ">
+          <img  className=" h-[70vh] w-full  " src="https://i.ibb.co/nk0nHZ5/Feeding-Families-mother-and-daughter.jpg" alt="" />
+        </div>
+      </Slider>
     </div>
   );
 };
