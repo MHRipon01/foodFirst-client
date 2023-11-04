@@ -18,10 +18,10 @@ const Register = () => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
-    const number = form.get("number");
+    const photoURL = form.get("photoURL");
     const password = form.get("password");
     const email = form.get("email");
-    console.log({ name, password, email, number });
+    console.log({ name, password, email });
     let toastId;
 
     if (!name && !email) {
@@ -39,6 +39,7 @@ const Register = () => {
       console.log("created");
       updateProfile(auth.currentUser, {
         displayName: name,
+        photoURL: photoURL,
         // phoneNumber: number
       });
 
@@ -88,7 +89,7 @@ const Register = () => {
               <div className="flex flex-col gap-4 px-6">
                 <div className="relative h-11 w-full min-w-[200px]">
                   <input
-                    name="number"
+                    name="photoURL"
                     className="w-full focus:bg-white h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-white focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder=" "
                   />
