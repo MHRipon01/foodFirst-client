@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Loading from "../components/Loading/Loading";
 import AllFood from "../Pages/AllFood/AllFood";
+import SingleFoodDetails from "../Pages/SingleFoodDetails/SingleFoodDetails";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
         path: "/allFoods",
         element: <AllFood></AllFood>,
       },
+      {
+        path: '/singleFood/:id',
+        element: <SingleFoodDetails></SingleFoodDetails>
+      }
     ],
   },
   {

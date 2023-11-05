@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HomeAllFoods = ({ food }) => {
   const {
-    
+    _id,
     foodImage,
     foodName,
     donatorImage,
@@ -35,13 +35,13 @@ const HomeAllFoods = ({ food }) => {
             <h3 className="md:pt-2 text-lg">{donatorName}</h3>
             </div>
             <p className="block font-sans text-lg antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
-              Food for: {foodQuantity} person
+              Food for: {foodQuantity} persons
             </p>
             <h3>{pickupLocation} </h3>
-            <h3>Expires: {expiredDate}</h3>
-            <p className="text-lg text-center">{additionalNotes}</p>
-            <Link to='/login' className="flex w-full  justify-center">
-            <button className=" w-fit px-3 py-2 bg-blue-100 " >View Details</button>
+            <h3>Expires in: {expiredDate}</h3>
+            <p className="text-lg ">{additionalNotes}</p>
+            <Link to={`/singleFood/${_id}`} className="flex w-full  justify-center">
+            <button className=" w-fit px-3 py-2 bg-blue-100 hover:bg-purple-400 hover:text-white rounded-lg my-5 " >View Details</button>
             </Link>
             
           </div>
