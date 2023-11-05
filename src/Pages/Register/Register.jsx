@@ -1,18 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
-import { AiOutlineGithub } from "react-icons/ai";
+// import { AiOutlineGithub } from "react-icons/ai";
 import { signInWithPopup, updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Firebase/AuthProvider";
-import { Tooltip } from "flowbite-react";
+// import { Tooltip } from "flowbite-react";
 
 const Register = () => {
-  const { createUser, auth, googleLogin } = useContext(AuthContext);
+  const { createUser, auth, googleLogin ,logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -43,25 +43,31 @@ const Register = () => {
         // phoneNumber: number
       });
 
-      toast.success("Registration complete!", { id: toastId });
-      navigate("/");
+      toast.success("Registration complete! Please Login now", { id: toastId });
+     
+      logOut()
+      .then(navigate("/login"))
+      .catch(error => {
+        console.log(error);
+         
+      })
     } catch (err) {
       toast.error(err.message);
       console.log(err);
     }
   };
 
-  const handleGoogleLogin = async () => {
-    const toastId = toast.loading("Logging in..");
-    try {
-      await signInWithPopup(auth, googleLogin);
+  // const handleGoogleLogin = async () => {
+  //   const toastId = toast.loading("Logging in..");
+  //   try {
+  //     await signInWithPopup(auth, googleLogin);
 
-      toast.success("Login successful", { id: toastId });
-      navigate(location?.state ? location.state : "/");
-    } catch (err) {
-      toast.error(err.message, { id: toastId });
-    }
-  };
+  //     toast.success("Login successful", { id: toastId });
+  //     navigate(location?.state ? location.state : "/");
+  //   } catch (err) {
+  //     toast.error(err.message, { id: toastId });
+  //   }
+  // };
 
   return (
     <div className="bg-gray-200 h-full lg:h-[100vh] bg-[url('https://i.ibb.co/mHqfZcY/image.png')]  from-gray-200 to-blue-gray-700 flex justify-center items-center">
@@ -141,7 +147,7 @@ const Register = () => {
             </div>
           </div>
         </form>
-        <div className="w-full gap-3 flex justify-center">
+        {/* <div className="w-full gap-3 flex justify-center">
           <div
             onClick={handleGoogleLogin}
             className="flex justify-center items-center w-full"
@@ -161,7 +167,7 @@ const Register = () => {
               </button>
             </Tooltip>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

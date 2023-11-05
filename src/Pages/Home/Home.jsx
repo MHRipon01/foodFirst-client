@@ -1,5 +1,6 @@
 // import { useContext } from "react";
 import Banner from "../../components/Banner";
+import Foods from "./Foods";
 import Highlights from "./Highlights";
 import Qoute from "./Qoute";
 // import { AuthContext } from "../../Firebase/AuthProvider";
@@ -11,7 +12,8 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Highlights></Highlights>
-      <h3 className="text-8xl">This will be data section </h3>
+      
+      <Foods></Foods>
       <Qoute></Qoute>
     </div>
   );

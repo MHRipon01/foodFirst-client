@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FcViewDetails } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import logo from '../../assets/healthy-food-salad-svgrepo-com.svg'
+import logo from "../../assets/healthy-food-salad-svgrepo-com.svg";
+import { AuthContext } from "../../Firebase/AuthProvider";
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  const {  user, logOut } = useContext(AuthContext);
+
+  const handleSignout = () =>{
+    logOut()
+    .then()
+    .catch(error => console.log(error))
+  }
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-gray-200 mb-3">
@@ -13,15 +23,12 @@ export default function Navbar() {
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase "
               href="/"
             >
-                <div className="flex justify-center items-center">
-                  <div className="max-w-[60px]">
-                     <img src={logo} alt="" />
-                    </div> 
-              <h2 className="text-xl">
-              FoodFirst
-                </h2>
+              <div className="flex justify-center items-center">
+                <div className="max-w-[60px]">
+                  <img src={logo} alt="" />
                 </div>
-             
+                <h2 className="text-xl">FoodFirst</h2>
+              </div>
             </a>
             <button
               className=" cursor-pointer text-3xl leading-none px-3 py-1 border-solid border-transparent rounded  block lg:hidden outline-none focus:outline-none"
@@ -82,11 +89,19 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <Link to="/login">
-                  <div className="px-4 py-2 flex items-center hover:text-white rounded-md uppercase font-bold  bg-blue-200 hover:bg-purple-500  hover:opacity-75">
-                    <button>Login</button>
+                {
+                user ?   <div className="px-4 py-2 flex items-center hover:text-white rounded-md uppercase font-bold  bg-blue-200 hover:bg-purple-500  hover:opacity-75">
+                    <button onClick={handleSignout}>Logout</button>
                   </div>
-                </Link>
+                  : 
+                 <Link to="/login"> <div className="px-4 py-2 flex items-center hover:text-white rounded-md uppercase font-bold  bg-blue-200 hover:bg-purple-500  hover:opacity-75">
+                    <button>Login</button>
+                  </div> </Link>
+                }
+
+                
+                  
+               
               </li>
             </ul>
           </div>
