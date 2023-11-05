@@ -11,8 +11,10 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <Highlights></Highlights>
-      
+     
+      <div className="w-full  justify-center  grid">
+         <Highlights></Highlights>
+      </div>
       <Foods></Foods>
       <Qoute></Qoute>
     </div>

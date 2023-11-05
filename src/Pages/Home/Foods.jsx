@@ -1,8 +1,8 @@
 import axios from "axios";
 import useAxios from "../../hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
-import { data } from "autoprefixer";
 import HomeAllFoods from "./HomeAllFoods";
+import Loading from "../../components/Loading/Loading";
 
 const Foods = () => {
   const axios = useAxios();
@@ -24,7 +24,7 @@ const Foods = () => {
   });
 
   if (isLoading) {
-    return <p>Loading.........</p>;
+    return <Loading></Loading>
   }
   if (isError) {
     return <p>Something went wrong: {error}</p>;

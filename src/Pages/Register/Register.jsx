@@ -1,14 +1,14 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 // import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 // import { AiOutlineGithub } from "react-icons/ai";
-import { signInWithPopup, updateProfile } from "firebase/auth";
+import {  updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Firebase/AuthProvider";
 // import { Tooltip } from "flowbite-react";
 
 const Register = () => {
-  const { createUser, auth, googleLogin ,logOut } = useContext(AuthContext);
+  const { createUser, auth ,logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -68,6 +68,10 @@ const Register = () => {
   //     toast.error(err.message, { id: toastId });
   //   }
   // };
+
+
+
+  
 
   return (
     <div className="bg-gray-200 h-full lg:h-[100vh] bg-[url('https://i.ibb.co/mHqfZcY/image.png')]  from-gray-200 to-blue-gray-700 flex justify-center items-center">

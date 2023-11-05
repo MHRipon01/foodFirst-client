@@ -4,8 +4,8 @@
 
 const Highlights = () => {
   return (
-    <div>
-      <hr className="h-px my-8 text-8xl w-[50vw] mx-auto font-bold bg-gray-700 border-0 "></hr>
+    <div className="mx-auto w-full ">
+      <hr className="h-px my-8 text-8xl  w-[50vw] mx-auto font-bold bg-gray-700 border-0 "></hr>
       <div className="grid lg:grid-cols-3 gap-4">
         {/* card 1 */}
         <div className="relative grid h-[30rem] w-full max-w-[28rem] flex-col items-end justify-center overflow-hidden  bg-white bg-clip-border text-center text-gray-700">
