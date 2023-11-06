@@ -4,9 +4,14 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Loading from "../components/Loading/Loading";
+
 import AllFood from "../Pages/AllFood/AllFood";
 import SingleFoodDetails from "../Pages/SingleFoodDetails/SingleFoodDetails";
+import AddFood from "../Pages/AddFood/AddFood";
+import ManageMyFoods from "../Pages/ManageMyFoods/ManageMyFoods";
+import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
+import PrivateRoute from "./PrivateRoute";
+import ReactTable from "../components/ReactTable/ReactTable";
 
 const routes = createBrowserRouter([
   {
@@ -24,7 +29,24 @@ const routes = createBrowserRouter([
       },
       {
         path: '/singleFood/:id',
-        element: <SingleFoodDetails></SingleFoodDetails>
+        element:<PrivateRoute><SingleFoodDetails></SingleFoodDetails>  </PrivateRoute> 
+      },
+      {
+        path: '/addFood',
+        element: <AddFood></AddFood>
+      }
+    ,  {
+        path: '/manageFood',
+        element: <ManageMyFoods></ManageMyFoods>
+      },
+      {
+        path: '/myRequest',
+        element: <MyFoodRequest></MyFoodRequest>
+      }
+      ,
+      {path: '/table',
+      element: <ReactTable></ReactTable>
+
       }
     ],
   },

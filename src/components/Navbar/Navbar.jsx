@@ -47,46 +47,62 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
+                <Link to='/'>
                 <a
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
-                  href="#pablo"
+                  
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">Home</span>
                 </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+               <Link to='/allFoods'>
+                 <a
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
-                  href="#pablo"
+                   
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">Available Foods</span>
                 </a>
+               </Link>
+               
               </li>
               <li className="nav-item">
+               
+               <Link to='/addFood'>
                 <a
                   className="px-3 py-2 flex items-center uppercase font-bold leading-snug hover:opacity-75"
-                  href="#pablo"
+                  
                 >
                   <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">Add Food</span>
                 </a>
+               </Link>
+               
               </li>
               <li className="nav-item">
-                <a
+               
+               <Link to='/manageFood'>
+               <a
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
-                  href="#pablo"
+               
                 >
                   <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">Manage My Foods</span>
                 </a>
+               </Link> 
               </li>
               <li className="nav-item">
-                <a className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75">
+                <Link to="/myRequest">
+                 <a className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75">
                   <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">My Food Request</span>
                 </a>
+                
+                </Link>
+               
               </li>
               <li className="nav-item">
                 {

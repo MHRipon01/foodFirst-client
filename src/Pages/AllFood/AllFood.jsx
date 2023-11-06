@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Loading2 from "../../components/Loading2/Loading2";
 import { Input } from "postcss";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AllFood = () => {
   const axios = useAxios();
@@ -42,6 +43,9 @@ const AllFood = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FoodFirst | Available foods </title>
+      </Helmet>
       {/* <input type="text" onClick={e => setSearch(e.target.value)} name="" id="" /> */}
 
       <div className="md:flex w-full  justify-between">
