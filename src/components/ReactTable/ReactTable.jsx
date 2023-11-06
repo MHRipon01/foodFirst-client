@@ -8,7 +8,7 @@ import { useMemo } from "react";
 
 import { useTable } from "react-table";
 import{COLUMNS} from "./BasicTable"
-
+// import BasicTable from './BasicTable'
 
 import axios from "axios";
 
@@ -73,6 +73,7 @@ console.log(addedFood);
   })}
 </tbody>
 </table>
+{/* <BasicTable data={addedFood}/> */}
 </div>
 
   );

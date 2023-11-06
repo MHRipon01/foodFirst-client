@@ -6,6 +6,10 @@ export const COLUMNS = [
     accessor: "foodName",
   },
   {
+    Header: "ID", // This is your ID field
+    accessor: "id",
+  },
+  {
     Header: "Food Image",
     accessor: "foodImage",
     // eslint-disable-next-line react/prop-types
@@ -78,7 +82,10 @@ export const COLUMNS = [
 
       const handleEdit = () => {
         // Navigate to the '/login' route
-        navigate("/login");
+        // alert('chck')
+        const foodId = row.original._id;
+        navigate(`/updateFood/${foodId}`)
+        
       };
       const handleDelete = () =>{
         navigate('/register')

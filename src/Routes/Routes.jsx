@@ -13,6 +13,7 @@ import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import ReactTable from "../components/ReactTable/ReactTable";
 import ManageSingleFood from "../Pages/ManageSingleFood/ManageSingleFood";
+import UpdateFood from "../Pages/UpdateFood/UpdateFood";
 
 const routes = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const routes = createBrowserRouter([
       {
         path: '/manageSingle',
         element: <ManageSingleFood></ManageSingleFood>
+      },
+      {
+        path: '/updateFood/:id',
+        element: <UpdateFood></UpdateFood>,
+        loader: ({params}) => fetch(`http://localhost:5000/updateFood/${params.id}`)
       },
       {
         path: '/myRequest',

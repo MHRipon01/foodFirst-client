@@ -37,7 +37,7 @@ const SingleFoodDetails = () => {
     queryKey: ["singleFoods"],
     queryFn: getFoods,
   });
-  console.log(singleFood);
+  // console.log(singleFood);
   if (isLoading) {
     return  <Loading2></Loading2>
   }
