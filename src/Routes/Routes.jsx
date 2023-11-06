@@ -12,6 +12,7 @@ import ManageMyFoods from "../Pages/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import ReactTable from "../components/ReactTable/ReactTable";
+import ManageSingleFood from "../Pages/ManageSingleFood/ManageSingleFood";
 
 const routes = createBrowserRouter([
   {
@@ -40,12 +41,19 @@ const routes = createBrowserRouter([
         element: <ManageMyFoods></ManageMyFoods>
       },
       {
+        path: '/manageSingle',
+        element: <ManageSingleFood></ManageSingleFood>
+      },
+      {
         path: '/myRequest',
-        element: <MyFoodRequest></MyFoodRequest>
+        element: <MyFoodRequest></MyFoodRequest>,
+        // loader: ({ params }) =>fetch(`http://localhost:5000/addedFood/${params.email}`)
       }
       ,
       {path: '/table',
-      element: <ReactTable></ReactTable>
+      element: <ReactTable></ReactTable>,
+      // loader: ({ params }) =>fetch(`http://localhost:5000/addedFood/${params.email}`
+      // ),
 
       }
     ],

@@ -30,9 +30,12 @@ const AddFood = () => {
       expiredDate:ExpiredDate,
       additionalNotes:notes,
       availability:dropdown,
+      donatorEmail:user?.email
+      
     };
 
     console.log(newFood);
+    // console.log(donatorEmail);
 
     //data sending to server
     fetch("http://localhost:5000/addFood", {
