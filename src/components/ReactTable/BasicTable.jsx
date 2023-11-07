@@ -1,4 +1,7 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const COLUMNS = [
   {
@@ -79,6 +82,10 @@ export const COLUMNS = [
     // eslint-disable-next-line react/prop-types, no-unused-vars
     Cell: ({ cell: { row } }) => {
       const navigate = useNavigate();
+      
+
+        
+   const [deleteFood, setDeleteFood] = useState([]);
 
       const handleEdit = () => {
         // Navigate to the '/login' route
@@ -88,10 +95,53 @@ export const COLUMNS = [
         
       };
       const handleDelete = () =>{
-        navigate('/register')
+        const food = row.original;
+        // navigate(`/deleteFood/${foodId}`)
+const foodId = row.original._id
+
+            // console.log(deleteFood);
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                fetch(
+                  `http://localhost:5000/deleteFood/${foodId}`,
+                  {
+                    method: "DELETE",
+                  }
+                )
+                  .then((res) => res.json())
+                  .then((data) => {
+                    console.log(data);
+                    // if (data.deletedCount > 0) {
+                    Swal.fire(
+                      "Deleted!",
+                      "Product has been deleted from the cart.",
+                      "success"
+                    );
+                    const remainingFood = food.filter(
+                      (singleProduct) => singleProduct._id != food._id
+                    );
+                    console.log(remainingFood);
+                    setDeleteFood(remainingFood);
+                  
+                    
+                  });
+              }
+            });
+          
+        toast(foodId)
       }
+
 const handleManage= () => {
-    navigate('/manageSingle')
+   const foodId = row.original._id;
+        navigate(`/manageSingle/${foodId}`)
 }
       return (
         <div className="flex">
