@@ -16,7 +16,7 @@ const ManageSingleFood = () => {
     }
   }, [_id]);
 
-  const {requestDate , requesterName ,requesterImg, } = manageFood || {}
+  const {requestDate , requesterName ,requesterImg, requestedBy ,} = manageFood || {}
 //   console.log(requestDate);
   console.log(manageFood);
   if (!manageFood) {
@@ -52,13 +52,16 @@ const ManageSingleFood = () => {
         </div>
       </div>
       <p className="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
-        Frontend Lead @ Google
+      {requestedBy}
       </p>
     </div>
-  </div>
+   
+  </div> <div>
+      {requestDate}
+    </div>
   <div className="p-0 mb-6">
     <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-     {manageFood.requestDate}
+    
     </p>
   </div>
 </div>

@@ -77,7 +77,7 @@ const SingleFoodDetails = () => {
       additionalNotes: notes,
       requesterName:user?.displayName,
       requestedBy: user?.email,
-      requesterImg: user.reloadUserInfo.photoUrl,
+      requesterImg: user.photoURL,
 
       donationMoney: donationMoney,
     };

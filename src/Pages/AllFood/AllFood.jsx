@@ -12,13 +12,13 @@ const AllFood = () => {
   const axios = useAxios();
   const [date, setDate] = useState("");
   const [search, setSearch] = useState("");
-  const [check, setCheck] = useState("");
+  const [name, setName] = useState("");
 
   console.log(search);
   console.log(date);
   const getFoods = async () => {
     const res = await axios.get(
-      `/foods?sortField=expiredDate&sortOrder=${date}&foodName=${check}`
+      `/foods?sortField=expiredDate&sortOrder=${date}&foodName=${name}`
     );
     // console.log(res);
     return res;
@@ -30,7 +30,7 @@ const AllFood = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["foods", date, check],
+    queryKey: ["foods", date, name],
     queryFn: getFoods,
   });
 
@@ -59,7 +59,7 @@ const AllFood = () => {
             />
             <button
               type="button"
-              onClick={() => setCheck(search)}
+              onClick={() => setName(search)}
               className="bg-[#FF444A]
            text-white px-6 text-lg font-semibold py-4 rounded-r-md"
             >
