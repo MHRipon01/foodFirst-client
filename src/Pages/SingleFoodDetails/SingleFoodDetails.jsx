@@ -9,7 +9,7 @@ import Loading2 from "../../components/Loading2/Loading2";
 
 const SingleFoodDetails = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user.displayName);
+  // console.log(user?.photoUrl);
   const axios = useAxios();
   const { id } = useParams();
   const [showModal, setShowModal] = React.useState(false);
@@ -54,6 +54,7 @@ const SingleFoodDetails = () => {
     pickupLocation,
     expiredDate,
     additionalNotes,
+    
   } = singleFood.data;
 
   const handleRequest = async (e) => {
@@ -74,7 +75,10 @@ const SingleFoodDetails = () => {
       pickupLocation: pickupLocation,
       expireDate: expiredDate,
       additionalNotes: notes,
-      requestedBy: user.email,
+      requesterName:user?.displayName,
+      requestedBy: user?.email,
+      requesterImg: user.reloadUserInfo.photoUrl,
+
       donationMoney: donationMoney,
     };
     console.log(formData);

@@ -141,7 +141,7 @@ const foodId = row.original._id
 
 const handleManage= () => {
    const foodId = row.original._id;
-        navigate(`/manageSingle/${foodId}`)
+        navigate(`/manage/${foodId}`)
 }
       return (
         <div className="flex">

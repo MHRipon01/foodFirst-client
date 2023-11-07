@@ -42,7 +42,7 @@ const routes = createBrowserRouter([
         element: <ManageMyFoods></ManageMyFoods>
       },
       {
-        path: '/manageSingle/:id',
+        path: '/manage/:id',
         element: <ManageSingleFood></ManageSingleFood>
         ,loader: ({params}) => fetch(`http://localhost:5000/updateFood/${params.id}`)
       },
