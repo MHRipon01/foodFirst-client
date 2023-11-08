@@ -30,38 +30,64 @@ const routes = createBrowserRouter([
         element: <AllFood></AllFood>,
       },
       {
-        path: '/singleFood/:id',
-        element:<PrivateRoute><SingleFoodDetails></SingleFoodDetails>  </PrivateRoute> 
+        path: "/singleFood/:id",
+        element: (
+          <PrivateRoute>
+            <SingleFoodDetails></SingleFoodDetails>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/addFood',
-        element: <AddFood></AddFood>
-      }
-    ,  {
-        path: '/manageFood',
-        element: <PrivateRoute> <ManageMyFoods></ManageMyFoods></PrivateRoute> 
+        path: "/addFood",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddFood></AddFood>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/manage/:id',
-        element: <ManageSingleFood></ManageSingleFood>
-        ,loader: ({params}) => fetch(`http://localhost:5000/updateFood/${params.id}`)
+        path: "/manageFood",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/updateFood/:id',
-        element: <UpdateFood></UpdateFood>,
-        loader: ({params}) => fetch(`http://localhost:5000/updateFood/${params.id}`)
+        path: "/manage/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ManageSingleFood></ManageSingleFood>{" "}
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://food-first-server.vercel.app/updateFood/${params.id}` ,{credentials: "include"}),
       },
       {
-        path: '/myRequest',
-        element: <PrivateRoute> <MyFoodRequest></MyFoodRequest></PrivateRoute> ,
-        // loader: ({params})=> fetch(`http://localhost:5000/requestedFood/${params.email}`)
-      }
-      ,
-      {path: '/table',
-      element: <ReactTable></ReactTable>,
-      
-
-      }
+        path: "/updateFood/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateFood></UpdateFood>{" "}
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://food-first-server.vercel.app/updateFood/${params.id}`, {credentials: "include"}),
+      },
+      {
+        path: "/myRequest",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
+        // loader: ({params})=> fetch(`https://food-first-server.vercel.app/requestedFood/${params.email}`)
+      },
+      { path: "/table", element: <ReactTable></ReactTable> },
     ],
   },
   {

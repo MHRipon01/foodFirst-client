@@ -7,7 +7,7 @@ import { AuthContext } from "../../Firebase/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
+const RequestCard = ({ myFoodRequests, datas, setDatas }) => {
   console.log(myFoodRequests);
   console.log(myFoodRequests?.donationMoney);
   const { auth, user } = useContext(AuthContext);
@@ -26,7 +26,7 @@ const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
   // const {isLoading} = axios
   // console.log(axios);
   // console.log(_id);
- const handleDelete = () => {
+  const handleDelete = () => {
     console.log(_id);
     Swal.fire({
       title: "Are you sure?",
@@ -38,37 +38,32 @@ const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
       confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/requestedFoods/${_id}`, {
+        fetch(`https://food-first-server.vercel.app/requestedFoods/${_id}`, {
           method: "DELETE",
-           credentials: 'include',
-        
+          credentials: "include",
         })
-
-
           .then((res) => res.json())
           .then(() => {
-            fetch(`http://localhost:5000/requestedFood/${email}`, { credentials: 'include' })
+            fetch(
+              `https://food-first-server.vercel.app/requestedFood/${email}`,
+              { credentials: "include" }
+            )
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);
-                setDatas(data)
+                setDatas(data);
                 // setCancelRequest(data);
-                const remainingData = datas.filter(singleData => singleData._id === _id)
-                setDatas(remainingData)
+                const remainingData = datas.filter(
+                  (singleData) => singleData._id === _id
+                );
+                setDatas(remainingData);
               });
-
-
-
-
-
-
 
             Swal.fire(
               "Canceled!",
               "Product has been canceled from the list.",
               "success"
             );
-           
           });
       }
     });
@@ -88,11 +83,11 @@ const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
   //   }).then((result) => {
   //     if (result.isConfirmed) {
   //       axios
-  //         .delete(`http://localhost:5000/requestedFoods/${_id}`)
+  //         .delete(`https://food-first-server.vercel.app/requestedFoods/${_id}`)
   //         .then(() => {
   //           // Refetch data after delete
   //           axios
-  //             .get(`http://localhost:5000/addedFood/${email}`, {
+  //             .get(`https://food-first-server.vercel.app/addedFood/${email}`, {
   //               withCredentials: true,
   //             })
   //             .then((res) => {
@@ -117,7 +112,6 @@ const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
   //   },
   // });
 
- 
   return (
     <div className="w-full">
       <div className="lg:grid-cols-3 flex-col w-full border-2 border-blue-700 flex">
@@ -150,15 +144,16 @@ const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
               <h5 className="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
                 {status}
               </h5>
-              {
-               (status == 'Delivered') ? <button className="blocked"></button> : <button
-                onClick={handleDelete}
-                className="px-3 py-2 bg-blue-200 font-bold rounded-md "
-              >
-                Cancel
-              </button>
-              }
-              
+              {status == "Delivered" ? (
+                <button className="blocked"></button>
+              ) : (
+                <button
+                  onClick={handleDelete}
+                  className="px-3 py-2 bg-blue-200 font-bold rounded-md "
+                >
+                  Cancel
+                </button>
+              )}
             </div>
           </div>
         </div>

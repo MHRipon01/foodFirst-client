@@ -86,19 +86,18 @@
 //       const navigate = useNavigate();
 //       const [data, setData] = useState([])
 //       const [addedFood , setAddedFood] = useState([])
-        
+
 //   const {user} = useContext(AuthContext);
 //   const email = user?.email
-  
 
 //       const handleEdit = () => {
 //         // Navigate to the '/login' route
 //         // alert('chck')
 //         const foodId = row.original._id;
 //         navigate(`/updateFood/${foodId}`)
-        
+
 //       };
-     
+
 //       const handleDelete = () => {
 //         const food = row.original;
 //         const foodId = row.original._id;
@@ -113,7 +112,7 @@
 //           confirmButtonText: "Yes, delete it!",
 //         }).then((result) => {
 //           if (result.isConfirmed) {
-//             fetch(`http://localhost:5000/deleteFood/${foodId}`, {
+//             fetch(`https://food-first-server.vercel.app/deleteFood/${foodId}`, {
 //               method: "DELETE",
 //             })
 //               .then((res) => res.json())
@@ -130,7 +129,7 @@
 //                     (singleProduct) => singleProduct._id !== food._id
 //                   );
 //                   setData(remainingFood);
-//                   axios.get(`http://localhost:5000/addedFood/${email}`, { withCredentials: true })
+//                   axios.get(`https://food-first-server.vercel.app/addedFood/${email}`, { withCredentials: true })
 //                   .then((res) => setAddedFood(res.data))
 //                   .catch((error) => {
 //                     console.error("Error fetching data:", error);

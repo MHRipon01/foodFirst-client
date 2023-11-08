@@ -55,18 +55,22 @@ const AuthProvider = ({ children }) => {
       // console.log(user);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://food-first-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
             console.log("token responce", res.data);
           });
       } else {
-        axios.post("http://localhost:5000/logout", loggedUser ,{withCredentials:true})
-      
-      .then(res => {
-        console.log(res.data);
-      })}
+        axios
+          .post("https://food-first-server.vercel.app/logout", loggedUser, {
+            withCredentials: true,
+          })
+
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
       unsubscribe;

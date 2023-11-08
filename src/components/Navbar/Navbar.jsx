@@ -52,7 +52,7 @@ console.log(user?.email );
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
                   
                 >
-                  <i className="fab fa-facebook-square text-lg leading-lg  opacity-75"></i>
+                 
                   <span className="ml-2">Home</span>
                 </a>
                 </Link>
@@ -63,7 +63,7 @@ console.log(user?.email );
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
                    
                 >
-                  <i className="fab fa-facebook-square text-lg leading-lg  opacity-75"></i>
+                 
                   <span className="ml-2">Available Foods</span>
                 </a>
                </Link>
@@ -76,7 +76,7 @@ console.log(user?.email );
                   className="px-3 py-2 flex items-center uppercase font-bold leading-snug hover:opacity-75"
                   
                 >
-                  <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
+                  
                   <span className="ml-2">Add Food</span>
                 </a>
                </Link>
@@ -89,7 +89,7 @@ console.log(user?.email );
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
                
                 >
-                  <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
+                  
                   <span className="ml-2">Manage My Foods</span>
                 </a>
                </Link> 
@@ -99,7 +99,7 @@ console.log(user?.email );
               <li className="nav-item">
                
                  <a className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75">
-                  <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
+                  
                   <span className="ml-2">My Food Request</span>
                 </a>
                 </li>

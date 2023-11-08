@@ -10,7 +10,7 @@ const ManageSingleFood = () => {
 
   useEffect(() => {
     if (_id) {
-      fetch(`http://localhost:5000/manage/${_id}`)
+      fetch(`https://food-first-server.vercel.app/manage/${_id}`,  {credentials: "include"})
         .then((res) => res.json())
         .then((data) => setManageFood(data))
         .catch((error) => {
@@ -40,7 +40,7 @@ const ManageSingleFood = () => {
   //     status
   //   };
   //   fetch(
-  //     `http://localhost:5000/update/${_id}`,
+  //     `https://food-first-server.vercel.app/update/${_id}`,
   //     {
   //       method: "PUT",
   //       headers: {
@@ -65,7 +65,7 @@ const ManageSingleFood = () => {
 
   const { requestDate, requesterName, requesterImg, requestedBy, status } =
     manageFood || {};
-    
+
   console.log(manageFood);
   if (!manageFood) {
     return <p>Loading...</p>;
@@ -78,29 +78,28 @@ const ManageSingleFood = () => {
 
   const handleChangeStatus = () => {
     // toast("check");
-console.log(_id);
+    console.log(_id);
     // event.preventDefault();
 
     // const requester_name = requesterName;
     // const request_Date = requestDate;
     // const requester_Img = requesterImg;
     // const requested_By = requestedBy;
-    const status = manageFood.status
+    const status = manageFood.status;
 
     // const details = form.details.value;
     // toast(status);
-    toast(status)
-    
+    toast(status);
 
     const updateRequesterInfo = {
       // requester_name,
       // request_Date,
       // requester_Img,
       // requested_By,
-      status
+      status,
     };
     console.log(updateRequesterInfo);
-    fetch(`http://localhost:5000/manageStatus/${_id}`, {
+    fetch(`https://food-first-server.vercel.app/manageStatus/${_id}`, {credentials: "include"}, {
       method: "PATCH",
       headers: {
         "content-type": "application/json ",
@@ -120,26 +119,18 @@ console.log(_id);
         }
       });
 
-      
     //main collection theke delete korbo akhane
-    
-    
-        fetch(
-          `http://localhost:5000/deleteFood/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            // if (data.deletedCount > 0) {
-           
-          
-            // }
-          });
-    
-  
+
+    fetch(`https://food-first-server.vercel.app/deleteFood/${_id}`, {credentials: "include"}, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // if (data.deletedCount > 0) {
+
+        // }
+      });
   };
 
   return (

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 const UpdateFood = () => {
   const food = useLoaderData();
   console.log(food);
-  
+
   const {
     _id,
     foodName,
@@ -46,16 +46,13 @@ const UpdateFood = () => {
 
     //send data to the server
 
-    fetch(
-      `http://localhost:5000/update/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json ",
-        },
-        body: JSON.stringify(updatedFood),
-      }
-    )
+    fetch(`https://food-first-server.vercel.app/update/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json ",
+      },
+      body: JSON.stringify(updatedFood),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

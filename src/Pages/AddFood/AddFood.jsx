@@ -20,24 +20,24 @@ const AddFood = () => {
     const dropdown = form.dropdown.value;
 
     const newFood = {
-        foodName: name,
+      foodName: name,
       foodImage: FoodImage,
-      foodQuantity:quantity,
-      pickupLocation:location,
-      donatorName:user?.displayName,
-      donatorImage:user?.photoURL,
+      foodQuantity: quantity,
+      pickupLocation: location,
+      donatorName: user?.displayName,
+      donatorImage: user?.photoURL,
 
-      expiredDate:ExpiredDate,
-      additionalNotes:notes,
-      availability:dropdown,
-      donatorEmail:user?.email
+      expiredDate: ExpiredDate,
+      additionalNotes: notes,
+      availability: dropdown,
+      donatorEmail: user?.email,
     };
 
     console.log(newFood);
     // console.log(donatorEmail);
 
     //data sending to server
-    fetch("http://localhost:5000/addFood", {
+    fetch("https://food-first-server.vercel.app/addFood", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -195,16 +195,15 @@ const AddFood = () => {
                 </div>
               </div>
             </div>
-              <h2 className="flex justify-center">{user?.email}</h2>
+            <h2 className="flex justify-center">{user?.email}</h2>
           </div>
           <div className="w-full flex justify-center">
- <input
-            type="submit"
-            value="Add Food"
-            className=" bg-blue-300 px-3 py-2 rounded font-semibold w-fit"
-          />
+            <input
+              type="submit"
+              value="Add Food"
+              className=" bg-blue-300 px-3 py-2 rounded font-semibold w-fit"
+            />
           </div>
-         
         </form>
       </div>
     </div>

@@ -8,22 +8,21 @@ const MyFoodRequest = () => {
   // const myFoodRequests = useLoaderData();
   // console.log(myFoodRequests);
 
-
-const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const [datas, setDatas] = useState();
   const [cancelRequest, setCancelRequest] = useState();
 
   useEffect(() => {
-   fetch(`http://localhost:5000/requestedFood/${user?.email}`)
-   .then(res => res.json())
-   .then(data => setDatas(data))
-  },[user])
+    fetch(`https://food-first-server.vercel.app/requestedFood/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setDatas(data));
+  }, [user]);
   return (
     <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-5 rounded-lg">
       <Helmet>
         <title>Food First | My Food Request</title>
-      </Helmet> 
+      </Helmet>
       {datas?.map((request) => (
         <RequestCard
           key={request._id}
@@ -31,7 +30,6 @@ const {user} = useContext(AuthContext)
           cancelRequest={cancelRequest}
           setCancelRequest={setCancelRequest}
           setDatas={setDatas}
-          
           datas={datas}
         ></RequestCard>
       ))}

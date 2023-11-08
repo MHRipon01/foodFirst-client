@@ -14,19 +14,19 @@ const SingleFoodDetails = () => {
   const { id } = useParams();
   const [showModal, setShowModal] = React.useState(false);
   const getFoods = async () => {
-    const res = await axios.get(`/singleFood/${id}`, {withCredentials: true});
+    const res = await axios.get(`/singleFood/${id}`, { withCredentials: true });
     // console.log(res);
     return res;
   };
 
   const [currentDate, setCurrentDate] = useState("");
 
-useEffect(() => {
-  const now = new Date();
-  const formattedDate = now.toLocaleDateString(); // Get the current date
-  const formattedTime = now.toLocaleTimeString(); // Get the current time
-  setCurrentDate(`${formattedDate} ${formattedTime}`);
-}, []); // Runs once on component mount
+  useEffect(() => {
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString(); // Get the current date
+    const formattedTime = now.toLocaleTimeString(); // Get the current time
+    setCurrentDate(`${formattedDate} ${formattedTime}`);
+  }, []); // Runs once on component mount
 
   const {
     data: singleFood,
@@ -39,7 +39,7 @@ useEffect(() => {
   });
   // console.log(singleFood);
   if (isLoading) {
-    return  <Loading2></Loading2>
+    return <Loading2></Loading2>;
   }
   if (isError) {
     return <p>Something went wrong: {error}</p>;
@@ -54,8 +54,7 @@ useEffect(() => {
     pickupLocation,
     expiredDate,
     additionalNotes,
-    donatorEmail
-    
+    donatorEmail,
   } = singleFood.data;
 
   const handleRequest = async (e) => {
@@ -69,8 +68,8 @@ useEffect(() => {
       foodName: foodName,
       foodImage: foodImage,
       foodId: _id,
-    donatorName:donatorName,
-      
+      donatorName: donatorName,
+
       // foodDonatorEmail: user.email,
       // foodDonatorName:foodDonatorName,
       UserEmail: user.email,
@@ -78,16 +77,16 @@ useEffect(() => {
       pickupLocation: pickupLocation,
       expireDate: expiredDate,
       additionalNotes: notes,
-      requesterName:user?.displayName,
+      requesterName: user?.displayName,
       requestedBy: user?.email,
       requesterImg: user.photoURL,
-status:'pending',
+      status: "pending",
       donationMoney: donationMoney,
     };
     console.log(formData);
 
     //data sending to server
-    fetch("http://localhost:5000/request", {
+    fetch("https://food-first-server.vercel.app/request", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -98,14 +97,12 @@ status:'pending',
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-        
           Swal.fire({
             title: "Success!",
             text: "Product Added Successfully",
             icon: "success",
             confirmButtonText: "Okay",
-  
-          })     
+          });
         }
       });
   };
@@ -297,19 +294,18 @@ status:'pending',
                   </div>
 
                   <div className="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
-                  
-                    <button type="submit"
-                     
+                    <button
+                      type="submit"
                       className="bg-emerald-500  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                     
-                      
                     >
                       Request
                     </button>
-                    <button className="bg-emerald-500  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"  onClick={() => setShowModal(false)}>
+                    <button
+                      className="bg-emerald-500  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      onClick={() => setShowModal(false)}
+                    >
                       Close
                     </button>
-                   
                   </div>
                 </form>
               </div>
