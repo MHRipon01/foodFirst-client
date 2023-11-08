@@ -103,9 +103,10 @@ const ManageSingleFood = () => {
     console.log(updateRequesterInfo);
     fetch(
       `https://food-first-server.vercel.app/manageStatus/${_id}`,
-      { credentials: "include" },
+      // { credentials: "include" },
       {
         method: "PATCH",
+        credentials: "include",
         headers: {
           "content-type": "application/json ",
         },
@@ -129,9 +130,10 @@ const ManageSingleFood = () => {
 
     fetch(
       `https://food-first-server.vercel.app/deleteFood/${_id}`,
-      { credentials: "include" },
+      // { credentials: "include" },
       {
         method: "DELETE",
+        credentials: "include",
       }
     )
       .then((res) => res.json())
