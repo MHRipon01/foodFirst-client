@@ -7,12 +7,12 @@ import { AuthContext } from "../../Firebase/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const RequestCard = ({ myFoodRequests }) => {
+const RequestCard = ({ myFoodRequests ,datas ,setDatas}) => {
   console.log(myFoodRequests);
   console.log(myFoodRequests?.donationMoney);
   const { auth, user } = useContext(AuthContext);
   const email = user.email;
-  const [cancelRequest, setCancelRequest , setDatas ,datas] = useState(myFoodRequests);
+  // const [  setDatas ,datas] = useState(myFoodRequests);
   const {
     _id,
     donatorName,
@@ -25,7 +25,7 @@ const RequestCard = ({ myFoodRequests }) => {
   // console.log(myFoodRequests?.expireDate);
   // const {isLoading} = axios
   // console.log(axios);
-  console.log(_id);
+  // console.log(_id);
  const handleDelete = () => {
     console.log(_id);
     Swal.fire({
@@ -41,15 +41,20 @@ const RequestCard = ({ myFoodRequests }) => {
         fetch(`http://localhost:5000/requestedFoods/${_id}`, {
           method: "DELETE",
            credentials: 'include',
+        
         })
+
+
           .then((res) => res.json())
           .then(() => {
             fetch(`http://localhost:5000/requestedFood/${email}`, { credentials: 'include' })
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);
-                // setDatas(data)
-                setCancelRequest(data);
+                setDatas(data)
+                // setCancelRequest(data);
+                const remainingData = datas.filter(singleData => singleData._id === _id)
+                setDatas(remainingData)
               });
 
 
