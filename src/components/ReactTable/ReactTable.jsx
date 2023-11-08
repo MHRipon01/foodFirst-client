@@ -203,6 +203,7 @@ const ReactTable = () => {
                     .get(
                       `https://food-first-server.vercel.app/addedFood/${email}`,
                       { withCredentials: true },
+                      // toast.success("deleted")
                       // {
                       //   withCredentials: true,
                       // }
@@ -259,7 +260,9 @@ const ReactTable = () => {
       );
       console.log(res.data);
       setAddedFood(res.data);
+      
       return res;
+
     },
   });
 

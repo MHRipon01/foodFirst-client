@@ -10,7 +10,9 @@ const ManageSingleFood = () => {
 
   useEffect(() => {
     if (_id) {
-      fetch(`https://food-first-server.vercel.app/manage/${_id}`,  {credentials: "include"})
+      fetch(`https://food-first-server.vercel.app/manage/${_id}`, {
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => setManageFood(data))
         .catch((error) => {
@@ -89,7 +91,7 @@ const ManageSingleFood = () => {
 
     // const details = form.details.value;
     // toast(status);
-    toast(status);
+    // toast(status);
 
     const updateRequesterInfo = {
       // requester_name,
@@ -99,13 +101,17 @@ const ManageSingleFood = () => {
       status,
     };
     console.log(updateRequesterInfo);
-    fetch(`https://food-first-server.vercel.app/manageStatus/${_id}`, {credentials: "include"}, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json ",
-      },
-      body: JSON.stringify(updateRequesterInfo),
-    })
+    fetch(
+      `https://food-first-server.vercel.app/manageStatus/${_id}`,
+      { credentials: "include" },
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json ",
+        },
+        body: JSON.stringify(updateRequesterInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -121,9 +127,13 @@ const ManageSingleFood = () => {
 
     //main collection theke delete korbo akhane
 
-    fetch(`https://food-first-server.vercel.app/deleteFood/${_id}`, {credentials: "include"}, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://food-first-server.vercel.app/deleteFood/${_id}`,
+      { credentials: "include" },
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
