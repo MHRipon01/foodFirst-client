@@ -7,7 +7,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   const {  user, logOut } = useContext(AuthContext);
-
+console.log(user?.email );
   const handleSignout = () =>{
     logOut()
     .then()
@@ -84,7 +84,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item">
                
-               <Link to='/manageFood'>
+               <Link to='/manageFood/'>
                <a
                   className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75"
                
@@ -94,16 +94,18 @@ export default function Navbar() {
                 </a>
                </Link> 
               </li>
+               <Link to={`/myRequest`}>
+              
               <li className="nav-item">
-                <Link to="/myRequest">
+               
                  <a className="px-3 py-2 flex items-center  uppercase font-bold leading-snug hover:opacity-75">
                   <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
                   <span className="ml-2">My Food Request</span>
                 </a>
-                
+                </li>
                 </Link>
                
-              </li>
+              
               <li className="nav-item">
                 {
                 user ?   <div className="px-4 py-2 flex items-center hover:text-white rounded-md uppercase font-bold  bg-blue-200 hover:bg-purple-500  hover:opacity-75">

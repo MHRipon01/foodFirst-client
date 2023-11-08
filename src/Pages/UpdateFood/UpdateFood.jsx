@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const UpdateFood = () => {
   const food = useLoaderData();
-  // console.log(food);
+  console.log(food);
   
   const {
     _id,

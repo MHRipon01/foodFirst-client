@@ -31,7 +31,6 @@ const AddFood = () => {
       additionalNotes:notes,
       availability:dropdown,
       donatorEmail:user?.email
-      
     };
 
     console.log(newFood);

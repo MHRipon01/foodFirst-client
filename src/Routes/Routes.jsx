@@ -39,7 +39,7 @@ const routes = createBrowserRouter([
       }
     ,  {
         path: '/manageFood',
-        element: <ManageMyFoods></ManageMyFoods>
+        element: <PrivateRoute> <ManageMyFoods></ManageMyFoods></PrivateRoute> 
       },
       {
         path: '/manage/:id',
@@ -53,14 +53,13 @@ const routes = createBrowserRouter([
       },
       {
         path: '/myRequest',
-        element: <MyFoodRequest></MyFoodRequest>,
-        // loader: ({ params }) =>fetch(`http://localhost:5000/addedFood/${params.email}`)
+        element: <PrivateRoute> <MyFoodRequest></MyFoodRequest></PrivateRoute> ,
+        // loader: ({params})=> fetch(`http://localhost:5000/requestedFood/${params.email}`)
       }
       ,
       {path: '/table',
       element: <ReactTable></ReactTable>,
-      // loader: ({ params }) =>fetch(`http://localhost:5000/addedFood/${params.email}`
-      // ),
+      
 
       }
     ],

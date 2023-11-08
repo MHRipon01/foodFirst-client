@@ -140,7 +140,7 @@ queryKey:['addedFood'],
 queryFn:async() => {
   const email = auth.currentUser.email
   // console.log(email);
-  const res = await axios.get(`http://localhost:5000/addedFood/${email}`)
+  const res = await axios.get(`http://localhost:5000/addedFood/${email}` , {withCredentials: true})
   // console.log(res.data);
   return res
 }
@@ -149,12 +149,48 @@ queryFn:async() => {
 const {mutate } = useMutation({
   mutationKey:['addedFood']
   , mutationFn: (id) => {
-   return axios.delete(`http://localhost:5000/deleteFood/${id}`)
+   return axios.delete(`http://localhost:5000/deleteFood/${id}` , {withCredentials: true})
   },onSuccess:() =>{
     toast.success('deleted')
     queryClient.invalidateQueries({queryKey: ['addedFood']})
   }
 })
+
+// const handleDelete = () => {
+//   const food = row.original;
+//   const foodId = row.original._id;
+
+//   Swal.fire({
+//     title: "Are you sure?",
+//     text: "You won't be able to revert this!",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#3085d6",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes, delete it!",
+//   })
+  
+
+//   .then((result) => {
+//     axios
+//     .delete(`http://localhost:5000/deleteFood/${foodId}`)
+//     .then(() => {
+//       // Refetch data after delete
+//       axios
+//         .get(`http://localhost:5000/addedFood/${email}`, {
+//           withCredentials: true,  
+//         })
+//         .then((res) => {
+//           setAddedFood(res.data);
+//           // window.reload()
+//         });
+//     })
+//     .catch((error) => {
+//       console.error("Error deleting:", error);
+//     });
+//   });
+// };
+
 
 const handleDelete = () => {
   const food = row.original;
@@ -169,27 +205,34 @@ const handleDelete = () => {
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   })
-  
-
   .then((result) => {
-    axios
-    .delete(`http://localhost:5000/deleteFood/${foodId}`)
-    .then(() => {
-      // Refetch data after delete
+    if (result.isConfirmed) {
       axios
-        .get(`http://localhost:5000/addedFood/${email}`, {
-          withCredentials: true,  
+        .delete(`http://localhost:5000/deleteFood/${foodId}`  , {withCredentials: true})
+        .then(() => {
+          // Refetch data after delete
+          axios
+            .get(`http://localhost:5000/addedFood/${email}` , {withCredentials: true}, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              setAddedFood(res.data);
+              
+            });
         })
-        .then((res) => {
-          setAddedFood(res.data);
-          // window.reload()
+        .catch((error) => {
+          console.error("Error deleting:", error);
         });
-    })
-    .catch((error) => {
-      console.error("Error deleting:", error);
-    });
+    }
   });
 };
+
+
+
+
+
+
+
 
 
       return (
@@ -226,9 +269,9 @@ const handleDelete = () => {
   const queryClient = useQueryClient();
 
   const { data: addedFoods } = useQuery({
-    queryKey: ['addedFood', email], // Update the query key to match 'addedFood' with the email
+    queryKey: ['addedFood', email], // Updated the query key to match 'addedFood' with the email
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/addedFood/${email}`);
+      const res = await axios.get(`http://localhost:5000/addedFood?email=${email}` , {withCredentials: true});
       console.log(res.data);
       setAddedFood(res.data);
       return res;
@@ -238,7 +281,7 @@ const handleDelete = () => {
   const { mutate } = useMutation({
     mutationKey: ['addedFood'], // Update the mutation key to match 'addedFood'
     mutationFn: (id) => {
-      return axios.delete(`http://localhost:5000/deleteFood/${id}`);
+      return axios.delete(`http://localhost:5000/deleteFood/${id}` , {withCredentials: true});
     },
     onSuccess: () => {
       toast.success('Deleted');

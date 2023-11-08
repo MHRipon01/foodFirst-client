@@ -9,7 +9,7 @@ const ManageMyFoods = () => {
             <Helmet>
         <title>FoodFirst | Manage Foods </title>
       </Helmet>
-            this will be manage foods
+      
             <ReactTable></ReactTable>
         </div>
     );

@@ -14,19 +14,19 @@ const SingleFoodDetails = () => {
   const { id } = useParams();
   const [showModal, setShowModal] = React.useState(false);
   const getFoods = async () => {
-    const res = await axios.get(`/singleFood/${id}`);
+    const res = await axios.get(`/singleFood/${id}`, {withCredentials: true});
     // console.log(res);
     return res;
   };
 
   const [currentDate, setCurrentDate] = useState("");
 
-  // Step 3: Use the useEffect hook to update the current date
-  useEffect(() => {
-    const now = new Date();
-    const formattedDate = now.toLocaleDateString(); // Get the current date
-    setCurrentDate(formattedDate);
-  }, []); // Runs once on component mount
+useEffect(() => {
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString(); // Get the current date
+  const formattedTime = now.toLocaleTimeString(); // Get the current time
+  setCurrentDate(`${formattedDate} ${formattedTime}`);
+}, []); // Runs once on component mount
 
   const {
     data: singleFood,
@@ -54,6 +54,7 @@ const SingleFoodDetails = () => {
     pickupLocation,
     expiredDate,
     additionalNotes,
+    donatorEmail
     
   } = singleFood.data;
 
@@ -68,6 +69,8 @@ const SingleFoodDetails = () => {
       foodName: foodName,
       foodImage: foodImage,
       foodId: _id,
+    donatorName:donatorName,
+      
       // foodDonatorEmail: user.email,
       // foodDonatorName:foodDonatorName,
       UserEmail: user.email,
@@ -78,7 +81,7 @@ const SingleFoodDetails = () => {
       requesterName:user?.displayName,
       requestedBy: user?.email,
       requesterImg: user.photoURL,
-
+status:'pending',
       donationMoney: donationMoney,
     };
     console.log(formData);
@@ -201,7 +204,7 @@ const SingleFoodDetails = () => {
                             className="border-black px-1 border-2 rounded "
                             name="donatorEmail"
                             disabled
-                            defaultValue={user.email}
+                            defaultValue={donatorEmail}
                             required
                           />
                         </div>
@@ -213,7 +216,7 @@ const SingleFoodDetails = () => {
                             className="border-black px-1 border-2 rounded "
                             name="donatorName"
                             disabled
-                            defaultValue={user.displayName}
+                            defaultValue={donatorName}
                             required
                           />
                         </div>
