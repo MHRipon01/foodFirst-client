@@ -255,7 +255,7 @@ const ReactTable = () => {
     queryKey: ["addedFood", email], // Updated the query key to match 'addedFood' with the email
     queryFn: async () => {
       const res = await axios.get(
-        `https://food-first-server.vercel.app/addedFood?email=${email}`,
+        `https://food-first-server.vercel.app/addedFood/${email}`,
         { withCredentials: true }
       );
       console.log(res.data);
