@@ -125,7 +125,7 @@ console.log(_id);
     
     
         fetch(
-          `/deleteFood/${_id}`,
+          `http://localhost:5000/deleteFood/${_id}`,
           {
             method: "DELETE",
           }
@@ -134,11 +134,7 @@ console.log(_id);
           .then((data) => {
             console.log(data);
             // if (data.deletedCount > 0) {
-            Swal.fire(
-              "Deleted!",
-              "Product has been deleted from the cart.",
-              "success"
-            );
+           
           
             // }
           });

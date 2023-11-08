@@ -145,12 +145,15 @@ const RequestCard = ({ myFoodRequests }) => {
               <h5 className="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
                 {status}
               </h5>
-              <button
+              {
+               (status == 'Delivered') ? <button className="blocked"></button> : <button
                 onClick={handleDelete}
                 className="px-3 py-2 bg-blue-200 font-bold rounded-md "
               >
                 Cancel
               </button>
+              }
+              
             </div>
           </div>
         </div>
