@@ -70,12 +70,12 @@ const ManageSingleFood = () => {
 
   console.log(manageFood);
   if (!manageFood) {
-    return <p>Loading...</p>;
+    return <p>You delivered the food to the needy.</p>;
   }
 
   console.log(_id);
   if (!manageFood.requestedBy) {
-    return <h3>No one requested this food yet!</h3>;
+    return <h3 className="text-3xl font-medium text-sky-300 my-28">The food has already been delivered, or no one has requested it yet!</h3>;
   }
 
   const handleChangeStatus = () => {
@@ -115,14 +115,17 @@ const ManageSingleFood = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
+        setManageFood(data)
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success",
             text: "Product updated successfully",
             icon: "success",
             confirmButtonText: "Cool",
+            
           });
+          
         }
       });
 
@@ -140,7 +143,8 @@ const ManageSingleFood = () => {
       .then((data) => {
         console.log(data);
         // if (data.deletedCount > 0) {
-
+         
+        
         // }
       });
   };
